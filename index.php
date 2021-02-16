@@ -6,17 +6,22 @@ error_reporting(E_ALL);
 
 <link rel="stylesheet" href="style.css">
 
-<?php $entries = [
+<?php 
+if (array_key_exists('r', $_REQUEST) && array_key_exists('c', $_REQUEST)) {
+    echo "<h3>r=" . $_REQUEST['r'] . "; c= " . $_REQUEST['c'] . "</h3>";
+}
+
+$entries = [
     ['', 'x', ''],
     ['x', '', ''],
     ['', '', 'x']
 ];
 ?>
 <div class="container">
-    <?php for($row = 0; $row < 3; $row++): ?>
-        <?php for($col = 0; $col < 3; $col++): ?>
-            <?php $entries[$row][$col] = 'x'; ?>
-            <a href="#"><?=$entries[$row][$col] ; ?></a>
+    <?php for($r = 0; $r < 3; $r++): ?>
+        <?php for($c = 0; $c < 3; $c++): ?>
+            <?php $entries[$r][$c] = 'x'; ?>
+<a href="?r=<?=$r?>&c=<?=$c?>"><?=$entries[$r][$c] ; ?></a>
         <?php endfor;?>
     <?php endfor;?>
 </div>
