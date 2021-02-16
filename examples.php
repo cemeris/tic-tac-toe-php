@@ -6,7 +6,10 @@ $entries = [
 ];
 
 for ($r = 0; $r < 3; $r++) {
-    for ($c = 0; $c < 3; $c++) {
+    for ($c = 0; $c < 3; $c += 1) {
+        if ($r === 1 && $c === 1) {
+            break 2;
+        }
         $entries[$r][$c] = 'x';
     }
 }
@@ -70,6 +73,72 @@ for ($r = 0; $r < 3; $r++) {
         ['x', 'x', 'x'],
         ['0', '0', '0'],
         ['x', 'x', 'x']
+    ];
+    output($entries);?>
+</div>
+
+<div style="width:100px; display:inline-block;">
+    <h1>5)</h1>
+    <?php
+    $entries = [
+        ['x', 'x', 'x'],
+        ['x', 'x', 'x'],
+        ['x', '0', '0']
+    ];
+    output($entries);?>
+</div>
+
+<div style="width:100px; display:inline-block;">
+    <h1>6)</h1>
+    <?php
+    $entries = [
+        ['x', 'x', 'x'],
+        ['x', '0', '0'],
+        ['x', '0', '0']
+    ];
+    output($entries);?>
+</div>
+
+<div style="width:100px; display:inline-block;">
+    <h1>7)</h1>
+    <?php
+    $entries = [
+        ['x', '0', 'x'],
+        ['0', '0', '0'],
+        ['x', '0', 'x']
+    ];
+    output($entries);?>
+</div>
+
+<div style="width:100px; display:inline-block;">
+    <h1>8)</h1>
+    <?php
+    $entries = [
+        ['x', '0', '0'],
+        ['m', 'm', 'm'],
+        ['x', '0', '0']
+    ];
+    output($entries);?>
+</div>
+
+<div style="width:100px; display:inline-block;">
+    <h1>9)</h1>
+    <?php
+    $entries = [
+        ['6', '0', '5'],
+        ['4', '0', '3'],
+        ['2', '0', '1']
+    ];
+    output($entries);?>
+</div>
+
+<div style="width:100px; display:inline-block;">
+    <h1>10)</h1>
+    <?php
+    $entries = [
+        ['8', '0', '5'],
+        ['3', '0', '2'],
+        ['1', '0', '1']
     ];
     output($entries);?>
 </div>
