@@ -16,11 +16,13 @@ $entries = [
     ['x', '', ''],
     ['', '', 'x']
 ];
+
+$i = 1;
 ?>
 <div class="container">
     <?php for($r = 0; $r < 3; $r++): ?>
         <?php for($c = 0; $c < 3; $c++): ?>
-            <?php $entries[$r][$c] = 'x'; ?>
+            <?php $entries[$r][$c] = $i++; ?>
 <a href="?r=<?=$r?>&c=<?=$c?>"><?=$entries[$r][$c] ; ?></a>
         <?php endfor;?>
     <?php endfor;?>
