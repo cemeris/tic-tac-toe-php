@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 <link rel="stylesheet" href="style.css">
 
-<?php 
+<?php
 
 
 $content = file_get_contents('tictactoe_db.json');
@@ -14,14 +14,17 @@ $entries = json_decode($content, true);
 if (!is_array($entries)) {
     $entries = [];
 }
+$entries['table'] = array_key_exists('table', $entries) ? $entries['table'] : [];
+
+$table = &$entries['table'];
+
 if (array_key_exists('r', $_REQUEST) && array_key_exists('c', $_REQUEST)) {
     echo "<h3>r=" . $_REQUEST['r'] . "; c= " . $_REQUEST['c'] . "</h3>";
-    $entries[$_REQUEST['r']][$_REQUEST['c']] = 'x';
-    if (!array_key_exists(3, $entries)) {
-        $entries[3] = 1;
-    }
-    else {
-        $entries[3]++;
+    $table[$_REQUEST['r']][$_REQUEST['c']] = 'x';
+    if (!array_key_exists('count', $entries)) {
+        $entries['count'] = 1;
+    } else {
+        $entries['count']++;
     }
 
     file_put_contents('tictactoe_db.json', json_encode($entries, JSON_PRETTY_PRINT));
@@ -30,12 +33,9 @@ if (array_key_exists('r', $_REQUEST) && array_key_exists('c', $_REQUEST)) {
 ?>
 
 <div class="container">
-    <?php for($r = 0; $r < 3; $r++): ?>
-        <?php for($c = 0; $c < 3; $c++): ?>
-<a href="?r=<?=$r?>&c=<?=$c?>"><?=$entries[$r][$c] ; ?></a>
-        <?php endfor;?>
-    <?php endfor;?>
+    <?php for ($r = 0; $r < 3; $r++) : ?>
+        <?php for ($c = 0; $c < 3; $c++) : ?>
+            <a href="?r=<?= $r ?>&c=<?= $c ?>"><?= $table[$r][$c]; ?></a>
+        <?php endfor; ?>
+    <?php endfor; ?>
 </div>
-
-
-
