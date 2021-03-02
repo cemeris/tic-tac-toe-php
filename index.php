@@ -11,15 +11,23 @@ error_reporting(E_ALL);
 
 $content = file_get_contents('tictactoe_db.json');
 $entries = json_decode($content, true);
+if (!is_array($entries)) {
+    $entries = [];
+}
 if (array_key_exists('r', $_REQUEST) && array_key_exists('c', $_REQUEST)) {
     echo "<h3>r=" . $_REQUEST['r'] . "; c= " . $_REQUEST['c'] . "</h3>";
     $entries[$_REQUEST['r']][$_REQUEST['c']] = 'x';
+    if (!array_key_exists(3, $entries)) {
+        $entries[3] = 1;
+    }
+    else {
+        $entries[3]++;
+    }
 
-    file_put_contents('tictactoe_db.json', json_encode($entries));
+    file_put_contents('tictactoe_db.json', json_encode($entries, JSON_PRETTY_PRINT));
 }
 
 ?>
-<pre><?=print_r($entries, true)?></pre>
 
 <div class="container">
     <?php for($r = 0; $r < 3; $r++): ?>
