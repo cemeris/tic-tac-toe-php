@@ -73,7 +73,7 @@ example8($value);
 echo "key =" . $array_a['key'] . "; value = " . $value;
 
 //EXAMPLE 9
-echo "<br><br><b>FUNCTIONS</b><br>EXAMPLE 9  <br>";
+echo "<br><br>EXAMPLE 9  <br>";
 $array_a = [
     'key' => 1
 ];
@@ -87,7 +87,7 @@ example9($value);
 echo "key =" . $array_a['key'] . "; value = " . $value;
 
 //EXAMPLE 10
-echo "<br><br><b>FUNCTIONS</b><br>EXAMPLE 10  <br>";
+echo "<br><br>EXAMPLE 10  <br>";
 $array_a = [
     'key' => 1
 ];
@@ -97,6 +97,34 @@ function example10(&$v) {
 }
 $value = &$array_a['key'];
 example9($value);
+
+echo "key =" . $array_a['key'] . "; value = " . $value;
+
+//EXAMPLE 11
+echo "<br><br>EXAMPLE 11  <br>";
+$array_a = [
+    'key' => 1
+];
+
+function example11(&$v) {
+    return $v++;
+}
+$value = example9($array_a['key']);
+
+echo "key =" . $array_a['key'] . "; value = " . $value;
+
+//EXAMPLE 12
+echo "<br><br>EXAMPLE 12  <br>";
+$array_a = [
+    'key' => 1
+];
+
+function &example12(&$v) {
+    $v++;
+    return $v;
+}
+$value = &example12($array_a['key']);
+$value += 3;
 
 echo "key =" . $array_a['key'] . "; value = " . $value;
 

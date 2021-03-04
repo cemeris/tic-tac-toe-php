@@ -18,3 +18,7 @@ function &getTable(&$entries) {
 function saveEntries($entries) {
     file_put_contents('tictactoe_db.json', json_encode($entries, JSON_PRETTY_PRINT));
 }
+
+function resetEntries() {
+    file_put_contents('tictactoe_db.json', '');
+}
