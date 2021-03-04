@@ -8,7 +8,7 @@ function getEntries() {
     return $entries;
 }
 
-function getTable(&$entries) {
+function &getTable(&$entries) {
     $entries['table'] = array_key_exists('table', $entries) ? $entries['table'] : [];
 
     return $entries['table'];

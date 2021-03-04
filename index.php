@@ -11,10 +11,7 @@ include 'functions.php';
 <?php
 $entries = getEntries();
 
-//getTable($entries);
-$entries['table'] = array_key_exists('table', $entries) ? $entries['table'] : [];
-$table = &$entries['table'];
-
+$table = &getTable($entries);
 
 if (array_key_exists('r', $_REQUEST) && array_key_exists('c', $_REQUEST)) {
     $r = $_REQUEST['r'];
