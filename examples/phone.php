@@ -25,25 +25,25 @@ if (array_key_exists('save', $_GET)) {
 ?>
 
 <!-- Output part: -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../style.css">
 <div class="container">
 
 
 
-<?php
+    <?php
     $i = 9;
-    while($i >= 0):?>
-<a href="?number=<?=$i?>&result=<?=$result?>"><?=$i-- ; ?></a>
-    <?php endwhile;?>
-    <a href="?save&result=<?=$result?>">Save</a>
+    while ($i >= 0) : ?>
+        <a href="?number=<?= $i ?>&result=<?= $result ?>"><?= $i--; ?></a>
+    <?php endwhile; ?>
+    <a href="?save&result=<?= $result ?>">Save</a>
 </div>
 
-<h2>Dial: <span id="output"><?=$result; ?></span></h2>
+<h2>Dial: <span id="output"><?= $result; ?></span></h2>
 <a href="?"><strong>Clear</strong></a><br>
 
 
 <?php
-for($i = 0; $i < count($nr_list); $i++ ) {
+for ($i = 0; $i < count($nr_list); $i++) {
     echo "<p>" . $nr_list[$i] . "</p>";
 }
 
