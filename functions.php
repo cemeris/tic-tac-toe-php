@@ -3,7 +3,7 @@
 function getEntries() {
     $entries = json_decode(file_get_contents('tictactoe_db.json'), true);
     if (!is_array($entries)) {
-        $entries = [];
+        $entries = ['table' => [], 'count' => 0];
     }
     return $entries;
 }
@@ -21,4 +21,16 @@ function saveEntries($entries) {
 
 function resetEntries() {
     file_put_contents('tictactoe_db.json', '');
+}
+
+// @Return: 'x' || 'o' || ''
+function getEntry($table, $r, $c) {
+    if (
+        array_key_exists($r, $table) &&
+        array_key_exists($c, $table[$r])
+    ) {
+        return $table[$r][$c];
+    }
+
+    return '';
 }
